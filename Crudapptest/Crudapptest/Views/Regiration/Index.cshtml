@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Crudapptest.Models.Registration>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table border="2px solid black">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Age
+            </th>
+            <th>
+                Contact
+            </th>
+            <th>
+                Adress
+            </th>
+            <th>
+                Email
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+            </tr>
+            <tr>
+                <td>@item.Name</td>
+            </tr>
+            <tr>
+                <td>@item.age</td>
+            </tr>
+            <tr>
+                <td>@item.Contact</td>
+            </tr>  
+            <tr>
+                <td>@item.adress</td>
+            </tr> 
+            <tr>
+                <td>@item.Email</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

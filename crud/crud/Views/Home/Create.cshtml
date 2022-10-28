@@ -1,0 +1,23 @@
+﻿@model crud.Models.Registration
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<form action="" method="post" enctype="multipart/form-data">
+
+    <label>Name</label>
+    <input type="text" name="name" value="" /> <br />
+    <label>Picture</label>
+    <input type="file" name="pic" value="" /> <br />
+    <label>Age</label>
+    <input type="number" name="age" value="" /> <br />
+    <label>Contact</label>
+    <input type="number" name="contact" value="" /> <br />
+    <input type="submit" name="name" value="Add" />
+
+
+</form>

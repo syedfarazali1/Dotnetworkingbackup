@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebApplication3.Models.Order_product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Images</th>
+            <th scope="col">audio</th>
+            <th scope="col">video</th>
+            <th scope="col">Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+        <tr>
+            <th scope="row">@item.GetORDERS.ID</th>
+            <th>
+                <img src="@item.GetORDERS.Images" alt="Girl in a jacket" width="500" height="600">
+            </th>
+            <th>
+                <audio controls>
+                    <source src="@item.GetORDERS.audio" type="audio/ogg">
+                    <source src="@item.GetORDERS.audio" type="audio/mpeg">
+                </audio>
+            </th>
+            <th>
+                <video width="320" height="240" controls>
+                    <source src="@item.GetORDERS.video" type="video/mp4">
+                    <source src="@item.GetORDERS.video" type="video/ogg">
+                </video>
+            </th>
+        </tr>
+            }
+
+
+    </tbody>
+</table>

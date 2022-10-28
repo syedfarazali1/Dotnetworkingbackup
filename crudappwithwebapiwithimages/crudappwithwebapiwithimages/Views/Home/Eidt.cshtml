@@ -1,0 +1,24 @@
+﻿@model crudappwithwebapiwithimages.Models.Info
+
+@{
+    ViewBag.Title = "Eidt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Eidt</h2>
+
+<form action="" method="post" enctype="multipart/form-data">
+    Name:
+    <input type="text" name="name" value="@Model.Name" /><br />
+    Contact:
+    <input type="text" name="Contact" value="@Model.Contact" /><br />
+    Email:
+    <input type="text" name="Email" value="@Model.Email" /><br />
+    Images:
+    <img class="img-responsive" width="20" height="20" src="~/Images/@Model.Images" alt="@Model.Images" />
+    <input type="file" name="file" value="" /><br />
+
+    <input type="submit" value="Save" /><br />
+
+
+</form>

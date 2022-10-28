@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RishtaWeb", "RishtaWeb\RishtaWeb.csproj", "{932FBA47-EC50-456A-8398-B1826E5572BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{932FBA47-EC50-456A-8398-B1826E5572BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932FBA47-EC50-456A-8398-B1826E5572BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932FBA47-EC50-456A-8398-B1826E5572BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932FBA47-EC50-456A-8398-B1826E5572BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C07E2CCA-05D8-43F9-A508-E6D16A51510F}
+	EndGlobalSection
+EndGlobal

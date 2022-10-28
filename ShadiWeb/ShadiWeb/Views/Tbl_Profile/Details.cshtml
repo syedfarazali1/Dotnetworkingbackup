@@ -1,0 +1,74 @@
+﻿@model ShadiWeb.Models.Tbl_Profile
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_Profile</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Height_education)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Height_education)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Work_with)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Work_with)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Job_Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job_Role)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Income)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Income)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Confrim_Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Confrim_Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

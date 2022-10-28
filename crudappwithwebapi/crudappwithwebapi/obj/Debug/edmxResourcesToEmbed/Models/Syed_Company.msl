@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Syed_companyModelStoreContainer" CdmEntityContainer="WebContext">
+    <EntitySetMapping Name="staffs">
+      <EntityTypeMapping TypeName="Syed_companyModel.staff">
+        <MappingFragment StoreEntitySet="staff">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="St_Name" ColumnName="St_Name" />
+          <ScalarProperty Name="St_Gender" ColumnName="St_Gender" />
+          <ScalarProperty Name="St_Desination" ColumnName="St_Desination" />
+          <ScalarProperty Name="St_salary" ColumnName="St_salary" />
+          <ScalarProperty Name="St_Adress" ColumnName="St_Adress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

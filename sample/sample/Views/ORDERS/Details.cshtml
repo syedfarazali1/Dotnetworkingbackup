@@ -1,0 +1,66 @@
+﻿@model sample.Models.ORDERS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ORDERS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ORD_AMOUNT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORD_AMOUNT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADVANCE_AMOUNT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADVANCE_AMOUNT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ORD_DATE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORD_DATE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CUST_CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CUST_CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AGENT_CODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AGENT_CODE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ORD_DESCRIPTION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ORD_DESCRIPTION)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ORD_NUM }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

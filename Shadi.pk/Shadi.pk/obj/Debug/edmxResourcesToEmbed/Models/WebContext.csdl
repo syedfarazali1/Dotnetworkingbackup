@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Shadi.comModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Education">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Height_education" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Work_with" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Job_Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Income" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="R_id" Type="Int32" />
+    <NavigationProperty Name="tbl_Registration" Relationship="Self.FK__Education__R_id__3A81B327" FromRole="Education" ToRole="tbl_Registration" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tbl_Registration">
+    <Key>
+      <PropertyRef Name="R_Id" />
+    </Key>
+    <Property Name="R_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Confrim_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Educations" Relationship="Self.FK__Education__R_id__3A81B327" FromRole="tbl_Registration" ToRole="Education" />
+  </EntityType>
+  <EntityType Name="Tbl_Profile">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Profile_For" />
+      <PropertyRef Name="F_Name" />
+      <PropertyRef Name="L_Name" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="Religion" />
+      <PropertyRef Name="Community" />
+      <PropertyRef Name="DOB" />
+      <PropertyRef Name="Country" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="With_Fam" />
+      <PropertyRef Name="Mar_Status" />
+      <PropertyRef Name="Diet" />
+      <PropertyRef Name="Height" />
+      <PropertyRef Name="Cast" />
+      <PropertyRef Name="About_Urself" />
+      <PropertyRef Name="Ph_No" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Height_education" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Work_with" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Job_Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Income" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Profile_For" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="L_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Community" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="With_Fam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mar_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Diet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Height" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cast" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="About_Urself" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ph_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Confrim_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK__Education__R_id__3A81B327">
+    <End Role="tbl_Registration" Type="Self.tbl_Registration" Multiplicity="0..1" />
+    <End Role="Education" Type="Self.Education" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Registration">
+        <PropertyRef Name="R_Id" />
+      </Principal>
+      <Dependent Role="Education">
+        <PropertyRef Name="R_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Educations" EntityType="Self.Education" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tbl_Registration" EntityType="Self.tbl_Registration" />
+    <EntitySet Name="Tbl_Profile" EntityType="Self.Tbl_Profile" />
+    <AssociationSet Name="FK__Education__R_id__3A81B327" Association="Self.FK__Education__R_id__3A81B327">
+      <End Role="tbl_Registration" EntitySet="tbl_Registration" />
+      <End Role="Education" EntitySet="Educations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

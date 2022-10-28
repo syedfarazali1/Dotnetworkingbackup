@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="feadc75f16e04c3c9cbef29540a6b956" Name="Diagram1">
+        <EntityTypeShape EntityType="dbicecreamepalourModel.book" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.FeeBack" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.Flavour" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.Oder" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.orderDetail" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.ReciepePayment" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.recipy" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.Subscriptionspayment" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.tblSubscription" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbicecreamepalourModel.tbluser" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__orderDeta__BookI__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__FeeBack__userId__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__Oders__userId__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__orderDeta__Ord_i__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__ReciepePa__recip__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__ReciepePa__userI__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__recipies__userId__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__Subscript__SubId__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="dbicecreamepalourModel.FK__Subscript__userI__2D27B809" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

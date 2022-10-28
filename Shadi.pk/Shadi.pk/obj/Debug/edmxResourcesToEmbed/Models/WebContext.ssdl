@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Shadi.comModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Education">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Height_education" Type="varchar(max)" />
+    <Property Name="Work_with" Type="varchar(max)" />
+    <Property Name="Job_Role" Type="varchar(max)" />
+    <Property Name="Income" Type="varchar(max)" />
+    <Property Name="R_id" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Shadi.com.dbo.Tbl_Profile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Tbl_Profile">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Profile_For" />
+      <PropertyRef Name="F_Name" />
+      <PropertyRef Name="L_Name" />
+      <PropertyRef Name="Gender" />
+      <PropertyRef Name="Religion" />
+      <PropertyRef Name="Community" />
+      <PropertyRef Name="DOB" />
+      <PropertyRef Name="Country" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="With_Fam" />
+      <PropertyRef Name="Mar_Status" />
+      <PropertyRef Name="Diet" />
+      <PropertyRef Name="Height" />
+      <PropertyRef Name="Cast" />
+      <PropertyRef Name="About_Urself" />
+      <PropertyRef Name="Ph_No" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Height_education" Type="varchar(max)" />
+    <Property Name="Work_with" Type="varchar(max)" />
+    <Property Name="Job_Role" Type="varchar(max)" />
+    <Property Name="Income" Type="varchar(max)" />
+    <Property Name="Profile_For" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="F_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="L_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Religion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Community" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOB" Type="date" Nullable="false" />
+    <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="With_Fam" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mar_Status" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Diet" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Height" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cast" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="About_Urself" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ph_No" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Confrim_Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tbl_Registration">
+    <Key>
+      <PropertyRef Name="R_Id" />
+    </Key>
+    <Property Name="R_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Confrim_Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Education__R_id__3A81B327">
+    <End Role="tbl_Registration" Type="Self.tbl_Registration" Multiplicity="0..1" />
+    <End Role="Education" Type="Self.Education" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Registration">
+        <PropertyRef Name="R_Id" />
+      </Principal>
+      <Dependent Role="Education">
+        <PropertyRef Name="R_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShadicomModelStoreContainer">
+    <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Registration" EntityType="Self.tbl_Registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Profile" EntityType="Self.Tbl_Profile" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Tbl_Profile].[Id] AS [Id], 
+    [Tbl_Profile].[Height_education] AS [Height_education], 
+    [Tbl_Profile].[Work_with] AS [Work_with], 
+    [Tbl_Profile].[Job_Role] AS [Job_Role], 
+    [Tbl_Profile].[Income] AS [Income], 
+    [Tbl_Profile].[Profile_For] AS [Profile_For], 
+    [Tbl_Profile].[F_Name] AS [F_Name], 
+    [Tbl_Profile].[L_Name] AS [L_Name], 
+    [Tbl_Profile].[Gender] AS [Gender], 
+    [Tbl_Profile].[Religion] AS [Religion], 
+    [Tbl_Profile].[Community] AS [Community], 
+    [Tbl_Profile].[DOB] AS [DOB], 
+    [Tbl_Profile].[Country] AS [Country], 
+    [Tbl_Profile].[City] AS [City], 
+    [Tbl_Profile].[With_Fam] AS [With_Fam], 
+    [Tbl_Profile].[Mar_Status] AS [Mar_Status], 
+    [Tbl_Profile].[Diet] AS [Diet], 
+    [Tbl_Profile].[Height] AS [Height], 
+    [Tbl_Profile].[Cast] AS [Cast], 
+    [Tbl_Profile].[About_Urself] AS [About_Urself], 
+    [Tbl_Profile].[Ph_No] AS [Ph_No], 
+    [Tbl_Profile].[Email] AS [Email], 
+    [Tbl_Profile].[Password] AS [Password], 
+    [Tbl_Profile].[Confrim_Password] AS [Confrim_Password]
+    FROM [dbo].[Tbl_Profile] AS [Tbl_Profile]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Education__R_id__3A81B327" Association="Self.FK__Education__R_id__3A81B327">
+      <End Role="tbl_Registration" EntitySet="tbl_Registration" />
+      <End Role="Education" EntitySet="Education" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Form</h2>
+<form action="" method="post">
+    <label class="form-control-static"> Reciver Email</label>   
+
+    <input class="form-control" type="text" name="receiver" value="" /> <br />
+
+    <label class="form-control-static"> Subject</label>
+
+    <input class="form-control" type="text" name="subject" value="" /> <br />
+
+    <label class="form-control-static"> Message</label>
+
+    <textarea class="form-control" rows="10" cols="15" name="message"></textarea> <br />
+
+    <label class="form-control-static"> Sender Email</label>
+
+    <input class="form-control" type="text" name="sender" value="" /> <br />
+
+    <input class="form-control" type="submit" name="name" value="Send" />
+
+
+        
+</form>

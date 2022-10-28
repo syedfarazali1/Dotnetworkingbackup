@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="df5b9c57fe0a456a98dd520bd0f27d51" Name="Diagram1">
+        <EntityTypeShape EntityType="WebContext.CategoryTable" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.Check" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.CustomerInvoiceDetailsTable" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.CustomerInvoiceTable" Width="1.5" PointX="7.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.CustomerPaymentTable" Width="1.5" PointX="7.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.CustomerTable" Width="1.5" PointX="9.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.PurchaseTable" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.ShopStockTable" Width="1.5" PointX="9.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.SupplierInvoiceDetailsTable" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.SupplierInvoiceTable" Width="1.875" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.SupplierPaymentTable" Width="2" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.SupplierTable" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.sysdiagram" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.UserTable" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.WereHouseStockTable" Width="1.5" PointX="2.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebContext.Customer_Sales" Width="1.5" PointX="4.75" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="WebContext.FK__PurchaseT__Categ__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="WebContext.FK__PurchaseT__Supli__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="WebContext.FK__PurchaseT__Total__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="WebContext.FK__SupplierI__Invoi__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="WebContext.FK_SupplierPaymentTable_PurchaseTable" ManuallyRouted="false" />
+        <AssociationConnector Association="WebContext.FK__SupplierI__Suppl__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="WebContext.FK__SupplierI__User___68487DD7" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

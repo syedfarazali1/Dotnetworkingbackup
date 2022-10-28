@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Shadi.comModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Height_education" Type="varchar(max)" />
+          <Property Name="Work_with" Type="varchar(max)" />
+          <Property Name="Job_Role" Type="varchar(max)" />
+          <Property Name="Income" Type="varchar(max)" />
+          <Property Name="R_id" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Shadi.com.dbo.Tbl_Profile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Tbl_Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Profile_For" />
+            <PropertyRef Name="F_Name" />
+            <PropertyRef Name="L_Name" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Religion" />
+            <PropertyRef Name="Community" />
+            <PropertyRef Name="DOB" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="With_Fam" />
+            <PropertyRef Name="Mar_Status" />
+            <PropertyRef Name="Diet" />
+            <PropertyRef Name="Height" />
+            <PropertyRef Name="Cast" />
+            <PropertyRef Name="About_Urself" />
+            <PropertyRef Name="Ph_No" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Height_education" Type="varchar(max)" />
+          <Property Name="Work_with" Type="varchar(max)" />
+          <Property Name="Job_Role" Type="varchar(max)" />
+          <Property Name="Income" Type="varchar(max)" />
+          <Property Name="Profile_For" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="F_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="L_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Religion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Community" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="With_Fam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mar_Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Diet" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Height" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cast" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="About_Urself" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ph_No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Confrim_Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Registration">
+          <Key>
+            <PropertyRef Name="R_Id" />
+          </Key>
+          <Property Name="R_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Confrim_Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Education__R_id__3A81B327">
+          <End Role="tbl_Registration" Type="Self.tbl_Registration" Multiplicity="0..1" />
+          <End Role="Education" Type="Self.Education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Registration">
+              <PropertyRef Name="R_Id" />
+            </Principal>
+            <Dependent Role="Education">
+              <PropertyRef Name="R_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ShadicomModelStoreContainer">
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Registration" EntityType="Self.tbl_Registration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Profile" EntityType="Self.Tbl_Profile" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Tbl_Profile].[Id] AS [Id], 
+    [Tbl_Profile].[Height_education] AS [Height_education], 
+    [Tbl_Profile].[Work_with] AS [Work_with], 
+    [Tbl_Profile].[Job_Role] AS [Job_Role], 
+    [Tbl_Profile].[Income] AS [Income], 
+    [Tbl_Profile].[Profile_For] AS [Profile_For], 
+    [Tbl_Profile].[F_Name] AS [F_Name], 
+    [Tbl_Profile].[L_Name] AS [L_Name], 
+    [Tbl_Profile].[Gender] AS [Gender], 
+    [Tbl_Profile].[Religion] AS [Religion], 
+    [Tbl_Profile].[Community] AS [Community], 
+    [Tbl_Profile].[DOB] AS [DOB], 
+    [Tbl_Profile].[Country] AS [Country], 
+    [Tbl_Profile].[City] AS [City], 
+    [Tbl_Profile].[With_Fam] AS [With_Fam], 
+    [Tbl_Profile].[Mar_Status] AS [Mar_Status], 
+    [Tbl_Profile].[Diet] AS [Diet], 
+    [Tbl_Profile].[Height] AS [Height], 
+    [Tbl_Profile].[Cast] AS [Cast], 
+    [Tbl_Profile].[About_Urself] AS [About_Urself], 
+    [Tbl_Profile].[Ph_No] AS [Ph_No], 
+    [Tbl_Profile].[Email] AS [Email], 
+    [Tbl_Profile].[Password] AS [Password], 
+    [Tbl_Profile].[Confrim_Password] AS [Confrim_Password]
+    FROM [dbo].[Tbl_Profile] AS [Tbl_Profile]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Education__R_id__3A81B327" Association="Self.FK__Education__R_id__3A81B327">
+            <End Role="tbl_Registration" EntitySet="tbl_Registration" />
+            <End Role="Education" EntitySet="Education" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Shadi.comModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Height_education" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Work_with" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Income" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="R_id" Type="Int32" />
+          <NavigationProperty Name="tbl_Registration" Relationship="Self.FK__Education__R_id__3A81B327" FromRole="Education" ToRole="tbl_Registration" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Registration">
+          <Key>
+            <PropertyRef Name="R_Id" />
+          </Key>
+          <Property Name="R_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Confrim_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Educations" Relationship="Self.FK__Education__R_id__3A81B327" FromRole="tbl_Registration" ToRole="Education" />
+        </EntityType>
+        <EntityType Name="Tbl_Profile">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Profile_For" />
+            <PropertyRef Name="F_Name" />
+            <PropertyRef Name="L_Name" />
+            <PropertyRef Name="Gender" />
+            <PropertyRef Name="Religion" />
+            <PropertyRef Name="Community" />
+            <PropertyRef Name="DOB" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="With_Fam" />
+            <PropertyRef Name="Mar_Status" />
+            <PropertyRef Name="Diet" />
+            <PropertyRef Name="Height" />
+            <PropertyRef Name="Cast" />
+            <PropertyRef Name="About_Urself" />
+            <PropertyRef Name="Ph_No" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Height_education" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Work_with" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Income" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Profile_For" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="F_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="L_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Religion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Community" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="With_Fam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mar_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Diet" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Height" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cast" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="About_Urself" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ph_No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Confrim_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Education__R_id__3A81B327">
+          <End Role="tbl_Registration" Type="Self.tbl_Registration" Multiplicity="0..1" />
+          <End Role="Education" Type="Self.Education" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Registration">
+              <PropertyRef Name="R_Id" />
+            </Principal>
+            <Dependent Role="Education">
+              <PropertyRef Name="R_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Educations" EntityType="Self.Education" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tbl_Registration" EntityType="Self.tbl_Registration" />
+          <EntitySet Name="Tbl_Profile" EntityType="Self.Tbl_Profile" />
+          <AssociationSet Name="FK__Education__R_id__3A81B327" Association="Self.FK__Education__R_id__3A81B327">
+            <End Role="tbl_Registration" EntitySet="tbl_Registration" />
+            <End Role="Education" EntitySet="Educations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ShadicomModelStoreContainer" CdmEntityContainer="WebContext">
+          <EntitySetMapping Name="Educations">
+            <EntityTypeMapping TypeName="Shadi.comModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Height_education" ColumnName="Height_education" />
+                <ScalarProperty Name="Work_with" ColumnName="Work_with" />
+                <ScalarProperty Name="Job_Role" ColumnName="Job_Role" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="R_id" ColumnName="R_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Shadi.comModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Registration">
+            <EntityTypeMapping TypeName="Shadi.comModel.tbl_Registration">
+              <MappingFragment StoreEntitySet="tbl_Registration">
+                <ScalarProperty Name="R_Id" ColumnName="R_Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Confrim_Password" ColumnName="Confrim_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Profile">
+            <EntityTypeMapping TypeName="Shadi.comModel.Tbl_Profile">
+              <MappingFragment StoreEntitySet="Tbl_Profile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Height_education" ColumnName="Height_education" />
+                <ScalarProperty Name="Work_with" ColumnName="Work_with" />
+                <ScalarProperty Name="Job_Role" ColumnName="Job_Role" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Profile_For" ColumnName="Profile_For" />
+                <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+                <ScalarProperty Name="L_Name" ColumnName="L_Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Religion" ColumnName="Religion" />
+                <ScalarProperty Name="Community" ColumnName="Community" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="With_Fam" ColumnName="With_Fam" />
+                <ScalarProperty Name="Mar_Status" ColumnName="Mar_Status" />
+                <ScalarProperty Name="Diet" ColumnName="Diet" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Cast" ColumnName="Cast" />
+                <ScalarProperty Name="About_Urself" ColumnName="About_Urself" />
+                <ScalarProperty Name="Ph_No" ColumnName="Ph_No" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Confrim_Password" ColumnName="Confrim_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

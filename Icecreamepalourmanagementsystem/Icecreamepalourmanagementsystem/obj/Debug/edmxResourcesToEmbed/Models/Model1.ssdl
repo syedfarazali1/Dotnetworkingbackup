@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbicecreamepalourModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="book">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tittle" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="Image" Type="varchar(max)" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeeBack">
+    <Key>
+      <PropertyRef Name="FeeBackId" />
+    </Key>
+    <Property Name="FeeBackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FbDetails" Type="varchar(max)" />
+    <Property Name="userId" Type="int" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Date" Type="varchar(max)" />
+    <Property Name="Contact" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Flavour">
+    <Key>
+      <PropertyRef Name="fla_ID" />
+    </Key>
+    <Property Name="fla_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fla_Name" Type="varchar" MaxLength="50" />
+    <Property Name="fla_Ingredients" Type="varchar" MaxLength="50" />
+    <Property Name="fla_Procedure" Type="varchar" MaxLength="50" />
+    <Property Name="fla_Decription" Type="varchar" MaxLength="50" />
+    <Property Name="fla_Images" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Oders">
+    <Key>
+      <PropertyRef Name="Ord_id" />
+    </Key>
+    <Property Name="Ord_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="Date" Type="varchar(max)" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Contact" Type="varchar(max)" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="Card_no" Type="varchar(max)" />
+    <Property Name="Amount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orderDetails">
+    <Key>
+      <PropertyRef Name="orderDetailId" />
+    </Key>
+    <Property Name="orderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ord_id" Type="int" />
+    <Property Name="BookId" Type="int" />
+    <Property Name="Price" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReciepePayment">
+    <Key>
+      <PropertyRef Name="ReciepePaymentId" />
+    </Key>
+    <Property Name="ReciepePaymentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="recipies_id" Type="int" Nullable="false" />
+    <Property Name="Date" Type="varchar(max)" Nullable="false" />
+    <Property Name="Card_No" Type="varchar(max)" />
+    <Property Name="Fee" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="recipies">
+    <Key>
+      <PropertyRef Name="recipies_id" />
+    </Key>
+    <Property Name="recipies_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="images" Type="varchar(max)" />
+    <Property Name="Ingredients" Type="varchar(max)" />
+    <Property Name="procedure" Type="varchar(max)" />
+    <Property Name="Description" Type="varchar(max)" />
+    <Property Name="userId" Type="int" />
+    <Property Name="Publish_date" Type="varchar(max)" />
+    <Property Name="Reciepe_type" Type="int" Nullable="false" />
+    <Property Name="Fee" Type="float" Nullable="false" />
+    <Property Name="Isselect" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subscriptionspayment">
+    <Key>
+      <PropertyRef Name="SubpayId" />
+    </Key>
+    <Property Name="SubpayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="SubId" Type="int" />
+    <Property Name="Date" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblSubscriptions">
+    <Key>
+      <PropertyRef Name="SubId" />
+    </Key>
+    <Property Name="SubId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tittle" Type="varchar" MaxLength="50" />
+    <Property Name="Days" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbluser">
+    <Key>
+      <PropertyRef Name="User_ID" />
+    </Key>
+    <Property Name="User_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_Name" Type="varchar" MaxLength="50" />
+    <Property Name="Contact" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="usertype" Type="int" Nullable="false" />
+    <Property Name="Card_No" Type="varchar" MaxLength="50" />
+    <Property Name="JoinDate" Type="varchar(max)" Nullable="false" />
+    <Property Name="IsActice" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__FeeBack__userId__33D4B598">
+    <End Role="tbluser" Type="Self.tbluser" Multiplicity="0..1" />
+    <End Role="FeeBack" Type="Self.FeeBack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbluser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="FeeBack">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Oders__userId__38996AB5">
+    <End Role="tbluser" Type="Self.tbluser" Multiplicity="0..1" />
+    <End Role="Oders" Type="Self.Oders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbluser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Oders">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orderDeta__BookI__3C69FB99">
+    <End Role="book" Type="Self.book" Multiplicity="0..1" />
+    <End Role="orderDetails" Type="Self.orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="book">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="orderDetails">
+        <PropertyRef Name="BookId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orderDeta__Ord_i__3B75D760">
+    <End Role="Oders" Type="Self.Oders" Multiplicity="0..1" />
+    <End Role="orderDetails" Type="Self.orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oders">
+        <PropertyRef Name="Ord_id" />
+      </Principal>
+      <Dependent Role="orderDetails">
+        <PropertyRef Name="Ord_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ReciepePa__recip__4E88ABD4">
+    <End Role="recipies" Type="Self.recipies" Multiplicity="1" />
+    <End Role="ReciepePayment" Type="Self.ReciepePayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="recipies">
+        <PropertyRef Name="recipies_id" />
+      </Principal>
+      <Dependent Role="ReciepePayment">
+        <PropertyRef Name="recipies_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ReciepePa__userI__4D94879B">
+    <End Role="tbluser" Type="Self.tbluser" Multiplicity="1" />
+    <End Role="ReciepePayment" Type="Self.ReciepePayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbluser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="ReciepePayment">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__recipies__userId__30F848ED">
+    <End Role="tbluser" Type="Self.tbluser" Multiplicity="0..1" />
+    <End Role="recipies" Type="Self.recipies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbluser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="recipies">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Subscript__SubId__2E1BDC42">
+    <End Role="tblSubscriptions" Type="Self.tblSubscriptions" Multiplicity="0..1" />
+    <End Role="Subscriptionspayment" Type="Self.Subscriptionspayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblSubscriptions">
+        <PropertyRef Name="SubId" />
+      </Principal>
+      <Dependent Role="Subscriptionspayment">
+        <PropertyRef Name="SubId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Subscript__userI__2D27B809">
+    <End Role="tbluser" Type="Self.tbluser" Multiplicity="0..1" />
+    <End Role="Subscriptionspayment" Type="Self.Subscriptionspayment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbluser">
+        <PropertyRef Name="User_ID" />
+      </Principal>
+      <Dependent Role="Subscriptionspayment">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbicecreamepalourModelStoreContainer">
+    <EntitySet Name="book" EntityType="Self.book" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeeBack" EntityType="Self.FeeBack" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flavour" EntityType="Self.Flavour" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oders" EntityType="Self.Oders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orderDetails" EntityType="Self.orderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReciepePayment" EntityType="Self.ReciepePayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="recipies" EntityType="Self.recipies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subscriptionspayment" EntityType="Self.Subscriptionspayment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblSubscriptions" EntityType="Self.tblSubscriptions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbluser" EntityType="Self.tbluser" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__FeeBack__userId__33D4B598" Association="Self.FK__FeeBack__userId__33D4B598">
+      <End Role="tbluser" EntitySet="tbluser" />
+      <End Role="FeeBack" EntitySet="FeeBack" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Oders__userId__38996AB5" Association="Self.FK__Oders__userId__38996AB5">
+      <End Role="tbluser" EntitySet="tbluser" />
+      <End Role="Oders" EntitySet="Oders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orderDeta__BookI__3C69FB99" Association="Self.FK__orderDeta__BookI__3C69FB99">
+      <End Role="book" EntitySet="book" />
+      <End Role="orderDetails" EntitySet="orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orderDeta__Ord_i__3B75D760" Association="Self.FK__orderDeta__Ord_i__3B75D760">
+      <End Role="Oders" EntitySet="Oders" />
+      <End Role="orderDetails" EntitySet="orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ReciepePa__recip__4E88ABD4" Association="Self.FK__ReciepePa__recip__4E88ABD4">
+      <End Role="recipies" EntitySet="recipies" />
+      <End Role="ReciepePayment" EntitySet="ReciepePayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ReciepePa__userI__4D94879B" Association="Self.FK__ReciepePa__userI__4D94879B">
+      <End Role="tbluser" EntitySet="tbluser" />
+      <End Role="ReciepePayment" EntitySet="ReciepePayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__recipies__userId__30F848ED" Association="Self.FK__recipies__userId__30F848ED">
+      <End Role="tbluser" EntitySet="tbluser" />
+      <End Role="recipies" EntitySet="recipies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Subscript__SubId__2E1BDC42" Association="Self.FK__Subscript__SubId__2E1BDC42">
+      <End Role="tblSubscriptions" EntitySet="tblSubscriptions" />
+      <End Role="Subscriptionspayment" EntitySet="Subscriptionspayment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Subscript__userI__2D27B809" Association="Self.FK__Subscript__userI__2D27B809">
+      <End Role="tbluser" EntitySet="tbluser" />
+      <End Role="Subscriptionspayment" EntitySet="Subscriptionspayment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

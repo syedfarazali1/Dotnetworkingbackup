@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Shadi.pk.Models.Tbl_Profile>
+
+@{
+    ViewBag.Title = "Pro_Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pro_Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Height_education)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Work_with)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Job_Role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Income)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Confrim_Password)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height_education)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Work_with)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Job_Role)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Income)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Confrim_Password)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

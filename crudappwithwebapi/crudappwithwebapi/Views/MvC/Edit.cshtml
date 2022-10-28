@@ -1,0 +1,89 @@
+﻿@model crudappwithwebapi.Models.staff
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-2">
+
+    <h2>Edit</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+
+            <div class="form-group">
+                <label class="control-label col-md-2 mb-2"> Name</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.St_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.St_Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group  my-3">
+                <label class="control-label col-md-2 mb-2"> Gender</label>
+                <div class="col-md-10">
+                    @{
+                        List<SelectListItem> listItems = new List<SelectListItem>();
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "Male",
+                            Value = "Male"
+                        });
+                        listItems.Add(new SelectListItem
+                        {
+                            Text = "FeMale",
+                            Value = "FeMale",
+
+                        });
+
+                    }
+
+                    @Html.DropDownListFor(model => model.St_Gender, listItems, "-- Select Status --", new { @class = "form-control" })
+
+
+                    @Html.ValidationMessageFor(model => model.St_Gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group my-3">
+                <label class="control-label col-md-2 mb-2"> Desination</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.St_Desination, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.St_Desination, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group my-3">
+                <label class="control-label col-md-2 mb-2"> Salary</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.St_salary, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.St_salary, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group my-3">
+                <label class="control-label col-md-2 mb-2"> Address</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.St_Adress, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.St_Adress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>

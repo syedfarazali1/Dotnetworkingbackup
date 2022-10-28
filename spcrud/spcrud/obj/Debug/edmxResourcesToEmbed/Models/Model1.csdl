@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Syed_companyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="salary">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="St_ID" Type="Int32" />
+    <NavigationProperty Name="staff" Relationship="Self.FK__salary__St_ID__36B12243" FromRole="salary" ToRole="staff" />
+  </EntityType>
+  <EntityType Name="staff">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="St_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="St_Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="St_Desination" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="St_salary" Type="Int64" />
+    <Property Name="St_Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="salaries" Relationship="Self.FK__salary__St_ID__36B12243" FromRole="staff" ToRole="salary" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__salary__St_ID__36B12243">
+    <End Role="staff" Type="Self.staff" Multiplicity="0..1" />
+    <End Role="salary" Type="Self.salary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="staff">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="salary">
+        <PropertyRef Name="St_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Syed_companyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="salaries" EntityType="Self.salary" />
+    <EntitySet Name="staffs" EntityType="Self.staff" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK__salary__St_ID__36B12243" Association="Self.FK__salary__St_ID__36B12243">
+      <End Role="staff" EntitySet="staffs" />
+      <End Role="salary" EntitySet="salaries" />
+    </AssociationSet>
+    <FunctionImport Name="SelectAllCustomers" ReturnType="Collection(Syed_companyModel.SelectAllCustomers_Result)" />
+    <FunctionImport Name="selectallcustomer" EntitySet="staffs" ReturnType="Collection(Syed_companyModel.staff)" />
+  </EntityContainer>
+  <ComplexType Name="SelectAllCustomers_Result">
+    <Property Type="String" Name="St_Name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Amount" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ShadiwebModelStoreContainer" CdmEntityContainer="WebContext">
+    <EntitySetMapping Name="Tbl_Profile">
+      <EntityTypeMapping TypeName="ShadiwebModel.Tbl_Profile">
+        <MappingFragment StoreEntitySet="Tbl_Profile">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Height_education" ColumnName="Height_education" />
+          <ScalarProperty Name="Work_with" ColumnName="Work_with" />
+          <ScalarProperty Name="Job_Role" ColumnName="Job_Role" />
+          <ScalarProperty Name="Income" ColumnName="Income" />
+          <ScalarProperty Name="Profile_For" ColumnName="Profile_For" />
+          <ScalarProperty Name="F_Name" ColumnName="F_Name" />
+          <ScalarProperty Name="L_Name" ColumnName="L_Name" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Religion" ColumnName="Religion" />
+          <ScalarProperty Name="Community" ColumnName="Community" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="With_Fam" ColumnName="With_Fam" />
+          <ScalarProperty Name="Mar_Status" ColumnName="Mar_Status" />
+          <ScalarProperty Name="Diet" ColumnName="Diet" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Cast" ColumnName="Cast" />
+          <ScalarProperty Name="About_Urself" ColumnName="About_Urself" />
+          <ScalarProperty Name="Ph_No" ColumnName="Ph_No" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Confrim_Password" ColumnName="Confrim_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

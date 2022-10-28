@@ -1,0 +1,901 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CategoryTable">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Check">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Check" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Inventory_Management_system.dbo.Customer_Sales' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Customer_Sales">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Sale_ID" Type="int" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="User" Type="varchar" MaxLength="50" />
+          <Property Name="Customer_ID" Type="int" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="Product_unit_price" Type="float" />
+          <Property Name="Total" Type="float" />
+        </EntityType>
+        <EntityType Name="CustomerInvoiceDetailsTable">
+          <Key>
+            <PropertyRef Name="CustomerInvoiceDetailID" />
+          </Key>
+          <Property Name="CustomerInvoiceDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerInvoice_ID" Type="int" Nullable="false" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="SaleQty" Type="int" Nullable="false" />
+          <Property Name="SaleUnitPrice" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerInvoiceTable">
+          <Key>
+            <PropertyRef Name="CustomerInvoiceID" />
+          </Key>
+          <Property Name="CustomerInvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="InvoiceNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tittle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalAmount" Type="float" Nullable="false" />
+          <Property Name="InvoiceDate" Type="date" Nullable="false" />
+          <Property Name="Decription" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="CustomerPaymentTable">
+          <Key>
+            <PropertyRef Name="CustomerPaymentID" />
+          </Key>
+          <Property Name="CustomerPaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_ID" Type="int" Nullable="false" />
+          <Property Name="CustomerInvoice_ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="InvoiceNo" Type="int" Nullable="false" />
+          <Property Name="TotalAmount" Type="float" Nullable="false" />
+          <Property Name="PaidAmount" Type="float" Nullable="false" />
+          <Property Name="RemainingBalance" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerTable">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cus_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cus_Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cus_Contact" Type="int" Nullable="false" />
+          <Property Name="Area" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Decription" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseTable">
+          <Key>
+            <PropertyRef Name="Sup_Invoice_ID" />
+          </Key>
+          <Property Name="Sup_Invoice_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Suplier_ID" Type="int" Nullable="false" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Dateofmanufacture" Type="date" />
+          <Property Name="Dateofexpiry" Type="date" />
+          <Property Name="Product_unit_price" Type="float" Nullable="false" />
+          <Property Name="Total" Type="float" Nullable="false" />
+          <Property Name="CategoryID" Type="int" />
+        </EntityType>
+        <EntityType Name="ShopStockTable">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category_ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="SaleunitPrice" Type="float" Nullable="false" />
+          <Property Name="CurrentPurchaseUnitPrice" Type="float" Nullable="false" />
+          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="ManufactureDate" Type="date" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierInvoiceDetailsTable">
+          <Key>
+            <PropertyRef Name="SupplierInvoiceDetailsID" />
+          </Key>
+          <Property Name="SupplierInvoiceDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierInvoice_ID" Type="int" Nullable="false" />
+          <Property Name="Product_ID" Type="int" Nullable="false" />
+          <Property Name="PuchaseQty" Type="int" Nullable="false" />
+          <Property Name="PuchaseUnitPrice" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierInvoiceTable">
+          <Key>
+            <PropertyRef Name="SupplierInvoiceID" />
+          </Key>
+          <Property Name="SupplierInvoiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Supplier_ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="Invoice_No" Type="int" Nullable="false" />
+          <Property Name="Tittle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalAmount" Type="float" Nullable="false" />
+          <Property Name="InvoiceDate" Type="date" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="SupplierPaymentTable">
+          <Key>
+            <PropertyRef Name="SupplierpaymentID" />
+          </Key>
+          <Property Name="SupplierpaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Supplier_ID" Type="int" Nullable="false" />
+          <Property Name="SupplierInvoice_ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="InvoiceNo" Type="int" />
+          <Property Name="TotalAmount" Type="float" Nullable="false" />
+          <Property Name="PaymentAmount" Type="float" Nullable="false" />
+          <Property Name="RemainingBalance" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierTable">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupplierName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNo" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Decription" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="ContactNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WereHouseStockTable">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Category_ID" Type="int" Nullable="false" />
+          <Property Name="User_ID" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="SaleunitPrice" Type="float" Nullable="false" />
+          <Property Name="CurrentPurchaseUnitPrice" Type="float" Nullable="false" />
+          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="ManufactureDate" Type="date" />
+          <Property Name="Description" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__PurchaseT__Categ__6A30C649">
+          <End Role="CategoryTable" Type="Self.CategoryTable" Multiplicity="0..1" />
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTable">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="PurchaseTable">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseT__Supli__6477ECF3">
+          <End Role="SupplierTable" Type="Self.SupplierTable" Multiplicity="1" />
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierTable">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="PurchaseTable">
+              <PropertyRef Name="Suplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseT__Total__6383C8BA">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="PurchaseTable">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierI__Invoi__693CA210">
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="1" />
+          <End Role="SupplierInvoiceTable" Type="Self.SupplierInvoiceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseTable">
+              <PropertyRef Name="Sup_Invoice_ID" />
+            </Principal>
+            <Dependent Role="SupplierInvoiceTable">
+              <PropertyRef Name="Invoice_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierI__Suppl__6754599E">
+          <End Role="SupplierTable" Type="Self.SupplierTable" Multiplicity="1" />
+          <End Role="SupplierInvoiceTable" Type="Self.SupplierInvoiceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierTable">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="SupplierInvoiceTable">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierI__User___68487DD7">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="SupplierInvoiceTable" Type="Self.SupplierInvoiceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SupplierInvoiceTable">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierPaymentTable_PurchaseTable">
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="0..1" />
+          <End Role="SupplierPaymentTable" Type="Self.SupplierPaymentTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseTable">
+              <PropertyRef Name="Sup_Invoice_ID" />
+            </Principal>
+            <Dependent Role="SupplierPaymentTable">
+              <PropertyRef Name="InvoiceNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WebContextStoreContainer">
+          <EntitySet Name="CategoryTable" EntityType="Self.CategoryTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Check" EntityType="Self.Check" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerInvoiceDetailsTable" EntityType="Self.CustomerInvoiceDetailsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerInvoiceTable" EntityType="Self.CustomerInvoiceTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerPaymentTable" EntityType="Self.CustomerPaymentTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerTable" EntityType="Self.CustomerTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseTable" EntityType="Self.PurchaseTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopStockTable" EntityType="Self.ShopStockTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierInvoiceDetailsTable" EntityType="Self.SupplierInvoiceDetailsTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierInvoiceTable" EntityType="Self.SupplierInvoiceTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierPaymentTable" EntityType="Self.SupplierPaymentTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierTable" EntityType="Self.SupplierTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WereHouseStockTable" EntityType="Self.WereHouseStockTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_Sales" EntityType="Self.Customer_Sales" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Customer_Sales].[Sale_ID] AS [Sale_ID], 
+    [Customer_Sales].[Product_ID] AS [Product_ID], 
+    [Customer_Sales].[User] AS [User], 
+    [Customer_Sales].[Customer_ID] AS [Customer_ID], 
+    [Customer_Sales].[Qty] AS [Qty], 
+    [Customer_Sales].[Product_unit_price] AS [Product_unit_price], 
+    [Customer_Sales].[Total] AS [Total]
+    FROM [dbo].[Customer_Sales] AS [Customer_Sales]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__PurchaseT__Categ__6A30C649" Association="Self.FK__PurchaseT__Categ__6A30C649">
+            <End Role="CategoryTable" EntitySet="CategoryTable" />
+            <End Role="PurchaseTable" EntitySet="PurchaseTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseT__Supli__6477ECF3" Association="Self.FK__PurchaseT__Supli__6477ECF3">
+            <End Role="SupplierTable" EntitySet="SupplierTable" />
+            <End Role="PurchaseTable" EntitySet="PurchaseTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseT__Total__6383C8BA" Association="Self.FK__PurchaseT__Total__6383C8BA">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="PurchaseTable" EntitySet="PurchaseTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierI__Invoi__693CA210" Association="Self.FK__SupplierI__Invoi__693CA210">
+            <End Role="PurchaseTable" EntitySet="PurchaseTable" />
+            <End Role="SupplierInvoiceTable" EntitySet="SupplierInvoiceTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierI__Suppl__6754599E" Association="Self.FK__SupplierI__Suppl__6754599E">
+            <End Role="SupplierTable" EntitySet="SupplierTable" />
+            <End Role="SupplierInvoiceTable" EntitySet="SupplierInvoiceTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierI__User___68487DD7" Association="Self.FK__SupplierI__User___68487DD7">
+            <End Role="UserTable" EntitySet="UserTable" />
+            <End Role="SupplierInvoiceTable" EntitySet="SupplierInvoiceTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierPaymentTable_PurchaseTable" Association="Self.FK_SupplierPaymentTable_PurchaseTable">
+            <End Role="PurchaseTable" EntitySet="PurchaseTable" />
+            <End Role="SupplierPaymentTable" EntitySet="SupplierPaymentTable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CategoryTable">
+          <Key>
+            <PropertyRef Name="CategoryID" />
+          </Key>
+          <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PurchaseTables" Relationship="Self.FK__PurchaseT__Categ__6A30C649" FromRole="CategoryTable" ToRole="PurchaseTable" />
+        </EntityType>
+        <EntityType Name="Check">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Check1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerInvoiceDetailsTable">
+          <Key>
+            <PropertyRef Name="CustomerInvoiceDetailID" />
+          </Key>
+          <Property Name="CustomerInvoiceDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerInvoice_ID" Type="Int32" Nullable="false" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="SaleQty" Type="Int32" Nullable="false" />
+          <Property Name="SaleUnitPrice" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerInvoiceTable">
+          <Key>
+            <PropertyRef Name="CustomerInvoiceID" />
+          </Key>
+          <Property Name="CustomerInvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tittle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Decription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CustomerPaymentTable">
+          <Key>
+            <PropertyRef Name="CustomerPaymentID" />
+          </Key>
+          <Property Name="CustomerPaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+          <Property Name="CustomerInvoice_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceNo" Type="Int32" Nullable="false" />
+          <Property Name="TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="PaidAmount" Type="Double" Nullable="false" />
+          <Property Name="RemainingBalance" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerTable">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cus_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cus_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cus_Contact" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Decription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseTable">
+          <Key>
+            <PropertyRef Name="Sup_Invoice_ID" />
+          </Key>
+          <Property Name="Sup_Invoice_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Suplier_ID" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Dateofmanufacture" Type="DateTime" Precision="0" />
+          <Property Name="Dateofexpiry" Type="DateTime" Precision="0" />
+          <Property Name="Product_unit_price" Type="Double" Nullable="false" />
+          <Property Name="Total" Type="Double" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" />
+          <NavigationProperty Name="CategoryTable" Relationship="Self.FK__PurchaseT__Categ__6A30C649" FromRole="PurchaseTable" ToRole="CategoryTable" />
+          <NavigationProperty Name="SupplierTable" Relationship="Self.FK__PurchaseT__Supli__6477ECF3" FromRole="PurchaseTable" ToRole="SupplierTable" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__PurchaseT__Total__6383C8BA" FromRole="PurchaseTable" ToRole="UserTable" />
+          <NavigationProperty Name="SupplierInvoiceTables" Relationship="Self.FK__SupplierI__Invoi__693CA210" FromRole="PurchaseTable" ToRole="SupplierInvoiceTable" />
+          <NavigationProperty Name="SupplierPaymentTables" Relationship="Self.FK_SupplierPaymentTable_PurchaseTable" FromRole="PurchaseTable" ToRole="SupplierPaymentTable" />
+        </EntityType>
+        <EntityType Name="ShopStockTable">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="SaleunitPrice" Type="Double" Nullable="false" />
+          <Property Name="CurrentPurchaseUnitPrice" Type="Double" Nullable="false" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="ManufactureDate" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierInvoiceDetailsTable">
+          <Key>
+            <PropertyRef Name="SupplierInvoiceDetailsID" />
+          </Key>
+          <Property Name="SupplierInvoiceDetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierInvoice_ID" Type="Int32" Nullable="false" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="PuchaseQty" Type="Int32" Nullable="false" />
+          <Property Name="PuchaseUnitPrice" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SupplierInvoiceTable">
+          <Key>
+            <PropertyRef Name="SupplierInvoiceID" />
+          </Key>
+          <Property Name="SupplierInvoiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Supplier_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="Invoice_No" Type="Int32" Nullable="false" />
+          <Property Name="Tittle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="InvoiceDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PurchaseTable" Relationship="Self.FK__SupplierI__Invoi__693CA210" FromRole="SupplierInvoiceTable" ToRole="PurchaseTable" />
+          <NavigationProperty Name="SupplierTable" Relationship="Self.FK__SupplierI__Suppl__6754599E" FromRole="SupplierInvoiceTable" ToRole="SupplierTable" />
+          <NavigationProperty Name="UserTable" Relationship="Self.FK__SupplierI__User___68487DD7" FromRole="SupplierInvoiceTable" ToRole="UserTable" />
+        </EntityType>
+        <EntityType Name="SupplierPaymentTable">
+          <Key>
+            <PropertyRef Name="SupplierpaymentID" />
+          </Key>
+          <Property Name="SupplierpaymentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Supplier_ID" Type="Int32" Nullable="false" />
+          <Property Name="SupplierInvoice_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceNo" Type="Int32" />
+          <Property Name="TotalAmount" Type="Double" Nullable="false" />
+          <Property Name="PaymentAmount" Type="Double" Nullable="false" />
+          <Property Name="RemainingBalance" Type="Double" Nullable="false" />
+          <NavigationProperty Name="PurchaseTable" Relationship="Self.FK_SupplierPaymentTable_PurchaseTable" FromRole="SupplierPaymentTable" ToRole="PurchaseTable" />
+        </EntityType>
+        <EntityType Name="SupplierTable">
+          <Key>
+            <PropertyRef Name="SupplierID" />
+          </Key>
+          <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNo" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Decription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PurchaseTables" Relationship="Self.FK__PurchaseT__Supli__6477ECF3" FromRole="SupplierTable" ToRole="PurchaseTable" />
+          <NavigationProperty Name="SupplierInvoiceTables" Relationship="Self.FK__SupplierI__Suppl__6754599E" FromRole="SupplierTable" ToRole="SupplierInvoiceTable" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserTable">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PurchaseTables" Relationship="Self.FK__PurchaseT__Total__6383C8BA" FromRole="UserTable" ToRole="PurchaseTable" />
+          <NavigationProperty Name="SupplierInvoiceTables" Relationship="Self.FK__SupplierI__User___68487DD7" FromRole="UserTable" ToRole="SupplierInvoiceTable" />
+        </EntityType>
+        <EntityType Name="WereHouseStockTable">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_ID" Type="Int32" Nullable="false" />
+          <Property Name="User_ID" Type="Int32" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="SaleunitPrice" Type="Double" Nullable="false" />
+          <Property Name="CurrentPurchaseUnitPrice" Type="Double" Nullable="false" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="ManufactureDate" Type="DateTime" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer_Sales">
+          <Key>
+            <PropertyRef Name="Product_ID" />
+          </Key>
+          <Property Name="Sale_ID" Type="Int32" />
+          <Property Name="Product_ID" Type="Int32" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Customer_ID" Type="Int32" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="Product_unit_price" Type="Double" />
+          <Property Name="Total" Type="Double" />
+        </EntityType>
+        <Association Name="FK__PurchaseT__Categ__6A30C649">
+          <End Role="CategoryTable" Type="Self.CategoryTable" Multiplicity="0..1" />
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryTable">
+              <PropertyRef Name="CategoryID" />
+            </Principal>
+            <Dependent Role="PurchaseTable">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseT__Supli__6477ECF3">
+          <End Role="SupplierTable" Type="Self.SupplierTable" Multiplicity="1" />
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierTable">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="PurchaseTable">
+              <PropertyRef Name="Suplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseT__Total__6383C8BA">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="PurchaseTable">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierI__Invoi__693CA210">
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="1" />
+          <End Role="SupplierInvoiceTable" Type="Self.SupplierInvoiceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseTable">
+              <PropertyRef Name="Sup_Invoice_ID" />
+            </Principal>
+            <Dependent Role="SupplierInvoiceTable">
+              <PropertyRef Name="Invoice_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SupplierPaymentTable_PurchaseTable">
+          <End Role="PurchaseTable" Type="Self.PurchaseTable" Multiplicity="0..1" />
+          <End Role="SupplierPaymentTable" Type="Self.SupplierPaymentTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseTable">
+              <PropertyRef Name="Sup_Invoice_ID" />
+            </Principal>
+            <Dependent Role="SupplierPaymentTable">
+              <PropertyRef Name="InvoiceNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierI__Suppl__6754599E">
+          <End Role="SupplierTable" Type="Self.SupplierTable" Multiplicity="1" />
+          <End Role="SupplierInvoiceTable" Type="Self.SupplierInvoiceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierTable">
+              <PropertyRef Name="SupplierID" />
+            </Principal>
+            <Dependent Role="SupplierInvoiceTable">
+              <PropertyRef Name="Supplier_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierI__User___68487DD7">
+          <End Role="UserTable" Type="Self.UserTable" Multiplicity="1" />
+          <End Role="SupplierInvoiceTable" Type="Self.SupplierInvoiceTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTable">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SupplierInvoiceTable">
+              <PropertyRef Name="User_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Inventory_Management_systemEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CategoryTables" EntityType="Self.CategoryTable" />
+          <EntitySet Name="Checks" EntityType="Self.Check" />
+          <EntitySet Name="CustomerInvoiceDetailsTables" EntityType="Self.CustomerInvoiceDetailsTable" />
+          <EntitySet Name="CustomerInvoiceTables" EntityType="Self.CustomerInvoiceTable" />
+          <EntitySet Name="CustomerPaymentTables" EntityType="Self.CustomerPaymentTable" />
+          <EntitySet Name="CustomerTables" EntityType="Self.CustomerTable" />
+          <EntitySet Name="PurchaseTables" EntityType="Self.PurchaseTable" />
+          <EntitySet Name="ShopStockTables" EntityType="Self.ShopStockTable" />
+          <EntitySet Name="SupplierInvoiceDetailsTables" EntityType="Self.SupplierInvoiceDetailsTable" />
+          <EntitySet Name="SupplierInvoiceTables" EntityType="Self.SupplierInvoiceTable" />
+          <EntitySet Name="SupplierPaymentTables" EntityType="Self.SupplierPaymentTable" />
+          <EntitySet Name="SupplierTables" EntityType="Self.SupplierTable" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+          <EntitySet Name="WereHouseStockTables" EntityType="Self.WereHouseStockTable" />
+          <EntitySet Name="Customer_Sales" EntityType="Self.Customer_Sales" />
+          <AssociationSet Name="FK__PurchaseT__Categ__6A30C649" Association="Self.FK__PurchaseT__Categ__6A30C649">
+            <End Role="CategoryTable" EntitySet="CategoryTables" />
+            <End Role="PurchaseTable" EntitySet="PurchaseTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseT__Supli__6477ECF3" Association="Self.FK__PurchaseT__Supli__6477ECF3">
+            <End Role="SupplierTable" EntitySet="SupplierTables" />
+            <End Role="PurchaseTable" EntitySet="PurchaseTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseT__Total__6383C8BA" Association="Self.FK__PurchaseT__Total__6383C8BA">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="PurchaseTable" EntitySet="PurchaseTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierI__Invoi__693CA210" Association="Self.FK__SupplierI__Invoi__693CA210">
+            <End Role="PurchaseTable" EntitySet="PurchaseTables" />
+            <End Role="SupplierInvoiceTable" EntitySet="SupplierInvoiceTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SupplierPaymentTable_PurchaseTable" Association="Self.FK_SupplierPaymentTable_PurchaseTable">
+            <End Role="PurchaseTable" EntitySet="PurchaseTables" />
+            <End Role="SupplierPaymentTable" EntitySet="SupplierPaymentTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierI__Suppl__6754599E" Association="Self.FK__SupplierI__Suppl__6754599E">
+            <End Role="SupplierTable" EntitySet="SupplierTables" />
+            <End Role="SupplierInvoiceTable" EntitySet="SupplierInvoiceTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierI__User___68487DD7" Association="Self.FK__SupplierI__User___68487DD7">
+            <End Role="UserTable" EntitySet="UserTables" />
+            <End Role="SupplierInvoiceTable" EntitySet="SupplierInvoiceTables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebContextStoreContainer" CdmEntityContainer="Inventory_Management_systemEntities">
+          <EntitySetMapping Name="CategoryTables">
+            <EntityTypeMapping TypeName="WebContext.CategoryTable">
+              <MappingFragment StoreEntitySet="CategoryTable">
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Checks">
+            <EntityTypeMapping TypeName="WebContext.Check">
+              <MappingFragment StoreEntitySet="Check">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Check1" ColumnName="Check" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerInvoiceDetailsTables">
+            <EntityTypeMapping TypeName="WebContext.CustomerInvoiceDetailsTable">
+              <MappingFragment StoreEntitySet="CustomerInvoiceDetailsTable">
+                <ScalarProperty Name="CustomerInvoiceDetailID" ColumnName="CustomerInvoiceDetailID" />
+                <ScalarProperty Name="CustomerInvoice_ID" ColumnName="CustomerInvoice_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="SaleQty" ColumnName="SaleQty" />
+                <ScalarProperty Name="SaleUnitPrice" ColumnName="SaleUnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerInvoiceTables">
+            <EntityTypeMapping TypeName="WebContext.CustomerInvoiceTable">
+              <MappingFragment StoreEntitySet="CustomerInvoiceTable">
+                <ScalarProperty Name="CustomerInvoiceID" ColumnName="CustomerInvoiceID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerPaymentTables">
+            <EntityTypeMapping TypeName="WebContext.CustomerPaymentTable">
+              <MappingFragment StoreEntitySet="CustomerPaymentTable">
+                <ScalarProperty Name="CustomerPaymentID" ColumnName="CustomerPaymentID" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="CustomerInvoice_ID" ColumnName="CustomerInvoice_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="RemainingBalance" ColumnName="RemainingBalance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTables">
+            <EntityTypeMapping TypeName="WebContext.CustomerTable">
+              <MappingFragment StoreEntitySet="CustomerTable">
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Cus_Name" ColumnName="Cus_Name" />
+                <ScalarProperty Name="Cus_Address" ColumnName="Cus_Address" />
+                <ScalarProperty Name="Cus_Contact" ColumnName="Cus_Contact" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseTables">
+            <EntityTypeMapping TypeName="WebContext.PurchaseTable">
+              <MappingFragment StoreEntitySet="PurchaseTable">
+                <ScalarProperty Name="Sup_Invoice_ID" ColumnName="Sup_Invoice_ID" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Suplier_ID" ColumnName="Suplier_ID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Dateofmanufacture" ColumnName="Dateofmanufacture" />
+                <ScalarProperty Name="Dateofexpiry" ColumnName="Dateofexpiry" />
+                <ScalarProperty Name="Product_unit_price" ColumnName="Product_unit_price" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopStockTables">
+            <EntityTypeMapping TypeName="WebContext.ShopStockTable">
+              <MappingFragment StoreEntitySet="ShopStockTable">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SaleunitPrice" ColumnName="SaleunitPrice" />
+                <ScalarProperty Name="CurrentPurchaseUnitPrice" ColumnName="CurrentPurchaseUnitPrice" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierInvoiceDetailsTables">
+            <EntityTypeMapping TypeName="WebContext.SupplierInvoiceDetailsTable">
+              <MappingFragment StoreEntitySet="SupplierInvoiceDetailsTable">
+                <ScalarProperty Name="SupplierInvoiceDetailsID" ColumnName="SupplierInvoiceDetailsID" />
+                <ScalarProperty Name="SupplierInvoice_ID" ColumnName="SupplierInvoice_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="PuchaseQty" ColumnName="PuchaseQty" />
+                <ScalarProperty Name="PuchaseUnitPrice" ColumnName="PuchaseUnitPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierInvoiceTables">
+            <EntityTypeMapping TypeName="WebContext.SupplierInvoiceTable">
+              <MappingFragment StoreEntitySet="SupplierInvoiceTable">
+                <ScalarProperty Name="SupplierInvoiceID" ColumnName="SupplierInvoiceID" />
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Invoice_No" ColumnName="Invoice_No" />
+                <ScalarProperty Name="Tittle" ColumnName="Tittle" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierPaymentTables">
+            <EntityTypeMapping TypeName="WebContext.SupplierPaymentTable">
+              <MappingFragment StoreEntitySet="SupplierPaymentTable">
+                <ScalarProperty Name="SupplierpaymentID" ColumnName="SupplierpaymentID" />
+                <ScalarProperty Name="Supplier_ID" ColumnName="Supplier_ID" />
+                <ScalarProperty Name="SupplierInvoice_ID" ColumnName="SupplierInvoice_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="RemainingBalance" ColumnName="RemainingBalance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SupplierTables">
+            <EntityTypeMapping TypeName="WebContext.SupplierTable">
+              <MappingFragment StoreEntitySet="SupplierTable">
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WebContext.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTables">
+            <EntityTypeMapping TypeName="WebContext.UserTable">
+              <MappingFragment StoreEntitySet="UserTable">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WereHouseStockTables">
+            <EntityTypeMapping TypeName="WebContext.WereHouseStockTable">
+              <MappingFragment StoreEntitySet="WereHouseStockTable">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SaleunitPrice" ColumnName="SaleunitPrice" />
+                <ScalarProperty Name="CurrentPurchaseUnitPrice" ColumnName="CurrentPurchaseUnitPrice" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="ManufactureDate" ColumnName="ManufactureDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_Sales">
+            <EntityTypeMapping TypeName="WebContext.Customer_Sales">
+              <MappingFragment StoreEntitySet="Customer_Sales">
+                <ScalarProperty Name="Sale_ID" ColumnName="Sale_ID" />
+                <ScalarProperty Name="Product_ID" ColumnName="Product_ID" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Product_unit_price" ColumnName="Product_unit_price" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
